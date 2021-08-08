@@ -1,0 +1,16 @@
+" Your original vimrc file was here...
+"   ...
+"   ...
+"   ...
+" In most cases you can leave it untouched and just do the following.
+
+
+" At the end of your original vimrc file, add these lines:
+
+" Added by Ken for custom vim settings:
+if exists("$MYCUSTOMVIM")
+  if filereadable("/etc/vimrc.local.".$MYCUSTOMVIM)
+    source /etc/vimrc.local.$MYCUSTOMVIM
+  endif
+endif
+

@@ -1,0 +1,107 @@
+" vimrc.local v1.0.6 , 2021-08-08 by Kenneth Aaron
+
+" Tip - when using vim (with or without this custom config file) - if you are getting
+" all sorts of unexpected behavior in vim - make an empty .vimrc in your home dir.
+
+syntax on
+colorscheme default
+set bg=dark
+set tabstop=4
+set autoindent
+set nobackup
+set number
+set showcmd
+set showmatch
+set scrolloff=5
+    " ^ Number of lines to display above/below when scrolling lines.
+set sidescroll=8
+    " ^ Number of chars to scroll horizontally. Default is half a page.
+set sidescrolloff=24
+    " ^ Number of chars to display at the left/right edge before scrolling horizontally.
+set hlsearch
+    " ^ Highlight search results
+set backspace=indent,eol,start
+    " ^ Sensible backspace behavior (Ken added 2020-06-24_1330)
+    "   See here: https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
+    "   indent    allow backspacing over autoindent
+    "   eol       allow backspacing over line breaks (join lines)
+    "   allow backspacing over the start of insert; CTRL-W and CTRL-U stop once at the start of insert
+
+
+" The following changes come from making everything tabs->spaces, not only python.
+" This effectively replaces the commented python code later on:
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+    " ^ Makes the spaces feel like real tabs
+set list
+    " ^ list & listchars mostly useful to find leading tabs at the beginning of python code
+set listchars=extends:>,precedes:<,nbsp:☠,tab:▸␣
+    " ^ The chars are:
+    "   extends -   Show the '>' char in long nonwrapped lines at the right
+    "   precedes -  Show the '<' char in long nonwrappled lines at the left
+    "   nbsp -      Show the special char instead of a non-breakable space
+    "   tab -       Shows the special char instead of the tab char
+highlight NonText ctermfg=yellow ctermbg=blue
+    " ^ Change the colors for the nontext listchars I configured above (extends & precedes)
+set nowrap
+    " ^ We can disable default wrap because I've now got right side indicators for long lines
+
+
+set cursorline
+    " ^ Enables cursor line position tracking
+highlight clear CursorLine
+    " ^ Removes the underline caused by enabling cursorline
+highlight CursorLineNR ctermbg=blue
+    " ^ Sets the line numbering to a clear background:
+
+
+" 2020-06-04 1315 - Ken added support for yaml format:
+autocmd Filetype yaml setlocal
+    \ expandtab
+    \ tabstop=2
+    \ shiftwidth=2
+    \ softtabstop=2
+
+
+" Extra white space tips from here:  http://vim.wikia.com/wiki/Highlight_unwanted_spaces :
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+    " ^ Any whitespace - even on empty lines
+" match ExtraWhitespace /\S\zs\s\+$/
+    " ^ Whitespace only after some text
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    " ^ Any whitespace
+" autocmd InsertLeave * match ExtraWhitespace /\S\zs\s\+$/
+    " ^ Only after some text
+" autocmd BufWinLeave * call clearmatches()
+
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " ^^^ Disable auto insert comment on a new line after a comment in the line above.
+    "     This doesn't work if there isn't an empty .vimrc in your home dir.
+    "     Similar situation to disabling mouse in vim.
+
+
+" These settings highlight a vertical cursor column:
+" set cursorcolumn
+" highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+" highlight CursorColumn ctermfg=Black ctermbg=Yellow cterm=bold guifg=Black guibg=yellow gui=NONE
+
+
+" The following additions can been made to support python editing in vim:
+" autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+" Or as individual lines:
+" autocmd Filetype python setlocal
+"   \ expandtab
+"   \ tabstop=4
+"   \ shiftwidth=4
+"   \ softtabstop=4
+"   \ list
+"   \ listchars=nbsp:☠,tab:▸␣
+"   "\ listchars=nbsp:.,tab:>-
+    " ^ Option using non-unicode chars
+" ^ However I've modified the default behavior for this so it is enforced everywhere
+
