@@ -1,4 +1,4 @@
-" vimrc.local v1.0.8 , 2021-08-13 by Kenneth Aaron
+" vimrc.local v1.0.9 , 2021-08-16 by Kenneth Aaron
 
 " Tip - when using vim (with or without this custom config file) - if you are getting
 "   all sorts of unexpected behavior in vim - make an empty .vimrc in your home dir.
@@ -22,6 +22,8 @@ set sidescrolloff=24
     " ^ Number of chars to display at the left/right edge before scrolling horizontally.
 set hlsearch
     " ^ Highlight search results
+set incsearch
+    " ^ Show search results as you type
 set backspace=indent,eol,start
     " ^ Sensible backspace behavior (Ken added 2020-06-24_1330)
     "   See here: https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
