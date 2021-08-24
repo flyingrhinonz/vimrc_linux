@@ -1,6 +1,7 @@
 # Source this file to convert vim to a more usable format using the custom vimrc file supplied.
 # You'd normally put it alongside your original vimrc and modify your vimrc slightly to be aware of
 # these new changes. Refer to that file for details.
+# Source: https://github.com/flyingrhinonz/vimrc_linux
 
 # Normally you would do:
 #   . vim-kenmode
