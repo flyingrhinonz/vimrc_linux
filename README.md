@@ -34,5 +34,3 @@ endif
 Then simply source your vim file with the following command:  **. vim-kenmode**  and enjoy productive editing.
 
 
-
-
