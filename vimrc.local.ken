@@ -1,4 +1,4 @@
-" vimrc.local v1.0.9 , 2021-08-16 by Kenneth Aaron
+" vimrc.local v1.0.10 , 2021-09-10 by Kenneth Aaron
 " Source: https://github.com/flyingrhinonz/vimrc_linux
 
 " Tip - when using vim (with or without this custom config file) - if you are getting
@@ -6,6 +6,12 @@
 
 syntax on
 colorscheme default
+
+" Syntax highlighting makes reading some text impossible in vimdiff mode.
+" Let's disable syntax highlighting in vimdiff mode:
+if &diff
+    syntax off
+endif
 
 set bg=dark
 set tabstop=4
