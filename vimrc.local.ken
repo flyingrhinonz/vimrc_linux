@@ -25,7 +25,7 @@ set scrolloff=5
     " ^ Number of lines to display above/below when scrolling lines
 set sidescroll=8
     " ^ Number of chars to scroll horizontally. Default is half a page.
-set sidescrolloff=20
+set sidescrolloff=8
     " ^ Number of chars to display at the left/right edge before scrolling horizontally.
 set hlsearch
     " ^ Highlight search results
