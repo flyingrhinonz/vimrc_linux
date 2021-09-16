@@ -1,4 +1,4 @@
-" vimrc.local v1.0.10 , 2021-09-10 by Kenneth Aaron
+" vimrc.local v1.0.11 , 2021-09-16 by Kenneth Aaron
 " Source: https://github.com/flyingrhinonz/vimrc_linux
 
 " Tip - when using vim (with or without this custom config file) - if you are getting
@@ -37,6 +37,13 @@ set backspace=indent,eol,start
     "   indent    allow backspacing over autoindent
     "   eol       allow backspacing over line breaks (join lines)
     "   allow backspacing over the start of insert; CTRL-W and CTRL-U stop once at the start of insert
+
+set visualbell
+    " ^ Use visualbell (screen flash) instead of beep
+set t_vb=
+    " ^ Disable the screen flash completely.
+    "       Note - both the settings above are required if you want to disable
+    "       both beeping and flashing.
 
 
 " The following changes come from making everything tabs->spaces, not only python.
