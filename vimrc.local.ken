@@ -1,4 +1,4 @@
-" vimrc.local v1.0.11 , 2021-09-16 by Kenneth Aaron
+" vimrc.local v1.0.12 , 2021-10-07 by Kenneth Aaron
 " Source: https://github.com/flyingrhinonz/vimrc_linux
 
 " Tip - when using vim (with or without this custom config file) - if you are getting
@@ -8,13 +8,12 @@ syntax on
 colorscheme default
 
 " Syntax highlighting makes reading some text impossible in vimdiff mode.
-" Let's disable syntax highlighting in vimdiff mode:
+" Disable syntax highlighting in vimdiff mode:
 if &diff
     syntax off
 endif
 
 set bg=dark
-set tabstop=4
 set autoindent
 set nobackup
 set number
@@ -32,7 +31,7 @@ set hlsearch
 set incsearch
     " ^ Show search results as you type
 set backspace=indent,eol,start
-    " ^ Sensible backspace behavior (Ken added 2020-06-24_1330)
+    " ^ Sensible backspace behavior
     "   See here: https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
     "   indent    allow backspacing over autoindent
     "   eol       allow backspacing over line breaks (join lines)
@@ -48,8 +47,14 @@ set t_vb=
 
 " The following changes come from making everything tabs->spaces, not only python.
 " This effectively replaces the commented python code later on:
+set tabstop=4
+    " ^ Tab key is now 4 chars rather than the traditional 8 chars which wastes
+    "       too much space when indenting.
 set expandtab
+    " ^ Inserts spaces whenever TAB key is pressed
+    "       If you want to insert a real tab char - use:  ctrl-v <TAB_KEY>
 set shiftwidth=4
+    " ^ Sets the number of space characters inserted for indentation
 set softtabstop=4
     " ^ Makes the spaces feel like real tabs
 
@@ -79,14 +84,17 @@ set nowrap
 
 
 set cursorline
-    " ^ Enables cursor line position tracking:
+    " ^ Enables cursor line position tracking
 highlight clear CursorLine
-    " ^ Removes the underline caused by enabling cursorline:
+    " ^ Removes the underline caused by enabling cursorline
+highlight clear CursorLineNr
+    " ^ In new vim versions the cursor line number is separated from CursorLine
+    "       and without this the cursor line number will still be underlined.
 highlight CursorLineNR ctermbg=blue
-    " ^ Sets the line numbering to a clear background:
+    " ^ Sets the line numbering to a clear background
 
 
-" 2020-06-04 1315 - Ken added support for yaml format:
+" Support for yaml format:
 autocmd Filetype yaml setlocal
     \ expandtab
     \ tabstop=2
