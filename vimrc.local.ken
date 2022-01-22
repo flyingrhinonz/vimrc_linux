@@ -1,4 +1,4 @@
-" vimrc.local v1.0.14 , 2021-12-13 by Kenneth Aaron
+" vimrc.local v1.0.15 , 2022-01-20 by Kenneth Aaron
 " Source: https://github.com/flyingrhinonz/vimrc_linux
 
 " Tip - when using vim (with or without this custom config file) - if you are getting
@@ -22,9 +22,9 @@ set showmatch
 
 set scrolloff=5
     " ^ Number of lines to display above/below when scrolling lines
-set sidescroll=8
+set sidescroll=4
     " ^ Number of chars to scroll horizontally. Default is half a page.
-set sidescrolloff=8
+set sidescrolloff=20
     " ^ Number of chars to display at the left/right edge before scrolling horizontally.
 set hlsearch
     " ^ Highlight search results
