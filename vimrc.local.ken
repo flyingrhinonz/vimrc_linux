@@ -1,8 +1,7 @@
-" vimrc.local v1.0.15 , 2022-01-20 by Kenneth Aaron
+" vimrc.local v1.0.17 , 2022-02-23 by Kenneth Aaron
 " Source: https://github.com/flyingrhinonz/vimrc_linux
 
-" Tip - when using vim (with or without this custom config file) - if you are getting
-"   all sorts of unexpected behavior in vim - make an empty .vimrc in your home dir.
+" Usage tips at the end of this file.
 
 syntax on
 colorscheme default
@@ -145,4 +144,22 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "   \ listchars=nbsp:☠,tab:▸␣
 "   "\ listchars=nbsp:.,tab:>-  " Option using non-unicode chars
 " However I've modified the default behavior for this so it is enforced everywhere
+
+
+"   Troubleshooting tips:
+"   =====================
+"
+"   Indentation problems:
+"       If you're encountering all sorts of issues with indentation (I've seen this on
+"           rhel 8 and fedora 35) - paste this into vim to see who last changed indentation settings:
+"           :verbose set ai? cin? cink? cino? si? inde? indk?
+"
+"   Paste from clipboard without the crazy indentation:
+"       :set paste      - disables all sorts of stuff to allow regular paste.
+"       :set nopaste    - returns you to how things were before.
+"
+"
+"   When using vim (with or without this custom config file) - if you are getting
+"       all sorts of unexpected behavior in vim - make an empty .vimrc in your home dir.
+"
 
