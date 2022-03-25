@@ -1,7 +1,12 @@
-" vimrc.local v1.0.17 , 2022-02-23 by Kenneth Aaron
-" Source: https://github.com/flyingrhinonz/vimrc_linux
+" Name:         vimrc.local
+" Description:  vim productivity improvements
+" Version:      1.0.17
+" Date:         2022-03-25
+" By:           Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
+" Github:       https://github.com/flyingrhinonz/vimrc_linux
+" License:      GPLv3
 
-" Usage tips at the end of this file.
+" Usage tips can be found at the end of this file.
 
 syntax on
 colorscheme default
