@@ -1,7 +1,7 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.17
-" Date:         2022-03-25
+" Version:      1.0.18
+" Date:         2022-06-06
 " By:           Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
 " License:      GPLv3
@@ -154,17 +154,20 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "   Troubleshooting tips:
 "   =====================
 "
-"   Indentation problems:
-"       If you're encountering all sorts of issues with indentation (I've seen this on
-"           rhel 8 and fedora 35) - paste this into vim to see who last changed indentation settings:
-"           :verbose set ai? cin? cink? cino? si? inde? indk?
-"
 "   Paste from clipboard without the crazy indentation:
 "       :set paste      - disables all sorts of stuff to allow regular paste.
 "       :set nopaste    - returns you to how things were before.
 "
 "
 "   When using vim (with or without this custom config file) - if you are getting
-"       all sorts of unexpected behavior in vim - make an empty .vimrc in your home dir.
+"       all sorts of unexpected behavior in vim - make an empty:  .vimrc  in your home dir.
+"       This solves all sorts of problems like disabling mouse, disabling auto comment
+"       on new line, plugin-defined indentation, etc.
+"
+"
+"   Indentation problems:
+"       If you're encountering all sorts of issues with indentation (I've seen this on
+"           rhel 8 and fedora 35) - paste this into vim to see who last changed indentation settings:
+"           :verbose set ai? cin? cink? cino? si? inde? indk?
 "
 
