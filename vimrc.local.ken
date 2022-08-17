@@ -1,7 +1,7 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
 " Version:      1.0.18
-" Date:         2022-06-06
+" Date:         2022-08-18
 " By:           Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
 " License:      GPLv3
@@ -159,10 +159,13 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "       :set nopaste    - returns you to how things were before.
 "
 "
-"   When using vim (with or without this custom config file) - if you are getting
+"   When using vim (with or without this ken custom config file) - if you are getting
 "       all sorts of unexpected behavior in vim - make an empty:  .vimrc  in your home dir.
-"       This solves all sorts of problems like disabling mouse, disabling auto comment
-"       on new line, plugin-defined indentation, etc.
+"   This solves all sorts of problems like:
+"       Disabling mouse in vim.
+"       Works with FileType to disable some unwanted behaviors.
+"       Disabling auto comment on new line.
+"       Plugin-defined indentation - especially unexpected yaml editing behavior.
 "
 "
 "   Indentation problems:
