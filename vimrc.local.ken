@@ -1,7 +1,7 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.18
-" Date:         2022-08-18
+" Version:      1.0.19
+" Date:         2022-09-10
 " By:           Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
 " License:      GPLv3
@@ -77,7 +77,9 @@ highlight NonText ctermfg=yellow ctermbg=blue
     "       :so $VIMRUNTIME/syntax/hitest.vim   inside vim
 
 " highlight NonText ctermfg=yellow ctermbg=17
-    " ^ Can also use 256 color numeric codes per: https://jonasjacek.github.io/colors/
+    " ^ Can also use 256 color numeric codes in cterm?? per:
+    "       https://jonasjacek.github.io/colors/
+    "       https://commons.wikimedia.org/wiki/File:Xterm_256color_chart.svg
 
 highlight EndOfBuffer ctermfg=grey ctermbg=black
     " ^ To set the color of the:  '~'  at the end of the file (only supported in vim 8+)
@@ -87,7 +89,7 @@ set nowrap
     "       that are longer than the screen fits.
 
 
-" The following section defines the line numbering colors.
+" The following section defines the line numbering colors and cursor line highlighting.
 " Note - the colors defined here work well when viewed inside a 256+ color terminal.
 "   If you edit a file directly on the device console you will most likely see degraded colors
 "   or even missing/wrong colors. Don't be surprised by this and try to fix vimrc, it's probably
@@ -96,6 +98,10 @@ set cursorline
     " ^ Enables cursor line position tracking
 highlight clear CursorLine
     " ^ Removes the underline caused by enabling cursorline
+highlight CursorLine guibg=#00005f ctermbg=17
+    " ^ Dark blue background on the current cursor line
+"highlight CursorLine guibg=#262626 ctermbg=235
+    " ^ Dark gray background on the current cursor line
 highlight clear CursorLineNr
     " ^ In new vim versions the cursor line number is separated from CursorLine
     "       and without this the cursor line number will still be underlined.

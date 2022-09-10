@@ -34,3 +34,6 @@ endif
 Then simply source your vim file with the following command:  **. vim-kenmode**  and enjoy productive editing.
 
 
+Color codes for cterm can be found [here](https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Xterm_256color_chart.svg/1404px-Xterm_256color_chart.svg.png) . Respect and thanks to its creator for making it available.
+
+
