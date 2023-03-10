@@ -1,10 +1,10 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.19
-" Date:         2022-09-10
-" By:           Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
-" Github:       https://github.com/flyingrhinonz/vimrc_linux
+" Version:      1.0.21
+" Date:         2023-03-10
+" Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " License:      GPLv3
+" Github:       https://github.com/flyingrhinonz/vimrc_linux
 
 " Usage tips can be found at the end of this file.
 
@@ -18,7 +18,7 @@ if &diff
 endif
 
 set bg=dark
-set autoindent
+set autoindent      " ai  in short
 set nobackup
 set number
 set showcmd
@@ -51,15 +51,15 @@ set t_vb=
 
 " The following changes come from making everything tabs->spaces, not only python.
 " This effectively replaces the commented python code later on:
-set tabstop=4
+set tabstop=4       " ts  in short
     " ^ Tab key is now 4 chars rather than the traditional 8 chars which wastes
     "       too much space when indenting.
-set expandtab
+set expandtab       " et  in short
     " ^ Inserts spaces whenever TAB key is pressed
     "       If you want to insert a real tab char - use:  ctrl-v <TAB_KEY>
-set shiftwidth=4
+set shiftwidth=4        " sw  in short
     " ^ Sets the number of space characters inserted for indentation
-set softtabstop=4
+set softtabstop=4       " sts  in short
     " ^ Makes the spaces feel like real tabs
 
 set list
@@ -99,7 +99,9 @@ set cursorline
 highlight clear CursorLine
     " ^ Removes the underline caused by enabling cursorline
 highlight CursorLine guibg=#00005f ctermbg=17
+"highlight CursorLine guibg=#00005f ctermbg=darkblue
     " ^ Dark blue background on the current cursor line
+    " ^ Can be specified as number or color name
 "highlight CursorLine guibg=#262626 ctermbg=235
     " ^ Dark gray background on the current cursor line
 highlight clear CursorLineNr
@@ -113,9 +115,13 @@ highlight CursorLineNR ctermbg=red ctermfg=white
 " Support for yaml format:
 autocmd Filetype yaml setlocal
     \ expandtab
+    \ cursorcolumn
     \ tabstop=2
     \ shiftwidth=2
     \ softtabstop=2
+    " ^ cursorcolumn (cuc  in short) is a vertical line at the cursor position.
+    "   Can be very annoying, so I only enabled it for yaml because the indentation
+    "       is only 2 spaces and easy to miss. Disable within vim with:  :set nocuc
 
 
 " Extra white space tips from here:
@@ -166,7 +172,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "
 "
 "   When using vim (with or without this ken custom config file) - if you are getting
-"       all sorts of unexpected behavior in vim - make an empty:  .vimrc  in your home dir.
+"       all sorts of unexpected behavior in vim - touch an empty:  .vimrc  in your home dir.
 "   This solves all sorts of problems like:
 "       Disabling mouse in vim.
 "       Works with FileType to disable some unwanted behaviors.

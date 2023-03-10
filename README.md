@@ -66,6 +66,7 @@ the file every time you open a terminal.
 
 Color codes for the various vim cterm command args can be found
 [here](https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Xterm_256color_chart.svg/1404px-Xterm_256color_chart.svg.png) .
+Helpful if you wish to modify the colors found in my configs.
 Respect and thanks to its creator for making it available.
 
 
