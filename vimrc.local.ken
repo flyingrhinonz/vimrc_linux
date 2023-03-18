@@ -1,7 +1,7 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.21
-" Date:         2023-03-10
+" Version:      1.0.22
+" Date:         2023-03-18
 " Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " License:      GPLv3
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
@@ -122,10 +122,12 @@ autocmd Filetype yaml setlocal
     " ^ cursorcolumn (cuc  in short) is a vertical line at the cursor position.
     "   Can be very annoying, so I only enabled it for yaml because the indentation
     "       is only 2 spaces and easy to miss. Disable within vim with:  :set nocuc
+    "   Uses:  highlight CursorColumn  that I configured later on to choose the
+    "       color of the vertical bar.
 
 
 " Extra white space tips from here:
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces  :
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces :
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
     " ^ Any whitespace - even on empty lines
@@ -144,10 +146,29 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     "     This doesn't work if there isn't an empty .vimrc in your home dir.
     "     Similar situation to disabling mouse in vim.
 
+
 " These settings highlight a vertical cursor column:
 " set cursorcolumn
+    " ^ This turns on a vertical bar at the cursor position. By default if you
+    "       don't use:  highlight CursorColumn  to set the color - it uses the
+    "       default colorscheme color for that.
+    "   This can be very annoying so I only use it for yaml files (see yaml section above).
+highlight CursorColumn ctermbg=236
+    " ^ Only if:  set cursorcolumn  has been enabled, this command sets the
+    "       color of the vertical bar to the color you define here.
+    "   Because I didn't enable:  set cursorcolumn  in general, this command has
+    "       no effect on all files (only on yaml files where I did enable set cursorcolumn).
+    "   This sets a dark gray vertical bar at the cursor position. Doesn't affect text colors
+    "       and is darker than visual select background color (ctrl or shift v).
+" highlight CursorColumn ctermbg=Red
+    " ^ Same as above but an example how to use color names instead of color codes.
 " highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+    " ^ In terminal this results in a vertical bar which is all white text on a yellow background.
+    "       The current char under the cursor maintains its own colorscheme color.
 " highlight CursorColumn ctermfg=Black ctermbg=Yellow cterm=bold guifg=Black guibg=yellow gui=NONE
+    " ^ In terminal this results in a vertical bar which is all black text on a yellow background.
+    "       The current char under the cursor maintains its own colorscheme color.
+
 
 " The following additions can been made to support python editing in vim:
 " autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
