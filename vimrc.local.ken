@@ -1,7 +1,7 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.22
-" Date:         2023-03-18
+" Version:      1.0.23
+" Date:         2023-07-30
 " Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " License:      GPLv3
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
@@ -30,10 +30,32 @@ set sidescroll=4
     " ^ Number of chars to scroll horizontally. Default is half a page.
 set sidescrolloff=20
     " ^ Number of chars to display at the left/right edge before scrolling horizontally.
+
+" Settings that help search:
 set hlsearch
     " ^ Highlight search results
 set incsearch
     " ^ Show search results as you type
+nnoremap <F3> 0y^/^<C-R>0\s\@!<CR>
+    " ^ Setup F3 key (in command mode) to search for the next line which has the same
+    "       indent level as the current line the cursor is on right now.
+    "   In essence this sets up a search pattern for leading whitespace
+    "       (which is also highlighed - just like any other search), therefore you can then
+    "       search forward and backward with:  n (next down)  and:  N (next up).
+    "   To get rid of the highlight (as with any other search) - simply search for some junk
+    "       text which doesn't exist - this yields no results and the highlighting is gone.
+    "   Taken from here and credit to Ben for the answer:
+    "       https://stackoverflow.com/questions/27248788/how-to-move-to-lines-with-the-same-indentation-in-gvim-or-any-other-text-editin
+    "   Command explained:
+    "       0y^     Jumps to the beginning of the line and yanks to the first text on the line
+    "       /^      Starts a search beginning at the start of a line
+    "       <C-R>0  Places the yanked text (the indentation) into the search pattern
+    "       \s\@!   Requires that the text after the matched indentation is not further whitespace (see :help /zero-width)
+    "       <CR>    Performs the search
+    "   Note this will fail on lines with no indent since there is nothing to copy between
+    "       the beginning of the line and the first text on the line.
+    "   It will also stop working when you get to a line with only indent, although it can reach those lines.
+
 set backspace=indent,eol,start
     " ^ Sensible backspace behavior
     "   See here: https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
@@ -194,6 +216,7 @@ highlight CursorColumn ctermbg=236
 "
 "   When using vim (with or without this ken custom config file) - if you are getting
 "       all sorts of unexpected behavior in vim - touch an empty:  .vimrc  in your home dir.
+"       Make sure this file is created as your own user/group so that you have permissions to read it.
 "   This solves all sorts of problems like:
 "       Disabling mouse in vim.
 "       Works with FileType to disable some unwanted behaviors.
