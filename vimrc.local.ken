@@ -1,7 +1,7 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.23
-" Date:         2023-07-30
+" Version:      1.0.24
+" Date:         2023-12-29
 " Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " License:      GPLv3
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
@@ -92,6 +92,11 @@ set listchars=extends:>,precedes:<,nbsp:☠,tab:▸␣
     "   precedes -  Show the '<' char in long nonwrappled lines at the left
     "   nbsp -      Show the special char instead of a non-breakable space
     "   tab -       Shows the special char instead of the tab char
+    "   Note - The above directive doesn't work on old vim versions and gives an error
+    "       similar to:  `E474: Invalid argument: listchars=extends:>,precedes: ...`
+    "       If you comment it out on its own - you'll end up with vim adding formatting
+    "       signs (such as:  `$`  at the end of lines). To disable this behavior - also
+    "       comment out the earlier:  `set list`  directive.
 
 highlight NonText ctermfg=yellow ctermbg=blue
     " ^ Change the colors for the nontext listchars I configured above (extends & precedes)
