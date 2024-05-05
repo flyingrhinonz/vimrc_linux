@@ -1,7 +1,7 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.24
-" Date:         2023-12-29
+" Version:      1.0.25
+" Date:         2024-05-05
 " Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " License:      GPLv3
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
@@ -180,13 +180,15 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     "       don't use:  highlight CursorColumn  to set the color - it uses the
     "       default colorscheme color for that.
     "   This can be very annoying so I only use it for yaml files (see yaml section above).
-highlight CursorColumn ctermbg=236
+highlight CursorColumn ctermbg=235
     " ^ Only if:  set cursorcolumn  has been enabled, this command sets the
     "       color of the vertical bar to the color you define here.
     "   Because I didn't enable:  set cursorcolumn  in general, this command has
     "       no effect on all files (only on yaml files where I did enable set cursorcolumn).
     "   This sets a dark gray vertical bar at the cursor position. Doesn't affect text colors
     "       and is darker than visual select background color (ctrl or shift v).
+    "   The color codes for greyscale are 232 (very dark, almost black) to 255 (white)
+    "       documented here:  https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 " highlight CursorColumn ctermbg=Red
     " ^ Same as above but an example how to use color names instead of color codes.
 " highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
