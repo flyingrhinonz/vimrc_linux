@@ -1,12 +1,14 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.25
-" Date:         2024-05-05
+" Version:      1.0.26
+" Date:         2024-05-19
 " Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " License:      GPLv3
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
 
 " Usage tips can be found at the end of this file.
+
+
 
 syntax on
 colorscheme default
@@ -17,6 +19,8 @@ if &diff
     syntax off
 endif
 
+
+
 set bg=dark
 set autoindent      " ai  in short
 set nobackup
@@ -26,16 +30,26 @@ set showmatch
 
 set scrolloff=5
     " ^ Number of lines to display above/below when scrolling lines
+
 set sidescroll=4
     " ^ Number of chars to scroll horizontally. Default is half a page.
+
 set sidescrolloff=20
     " ^ Number of chars to display at the left/right edge before scrolling horizontally.
 
+autocmd BufReadPost * if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
+    " ^ Tell vim to remember and jump to the last cursor line (regardless whether you did an edit or not) when reopening a file
+
+
+
 " Settings that help search:
+
 set hlsearch
     " ^ Highlight search results
+
 set incsearch
     " ^ Show search results as you type
+
 nnoremap <F3> 0y^/^<C-R>0\s\@!<CR>
     " ^ Setup F3 key (in command mode) to search for the next line which has the same
     "       indent level as the current line the cursor is on right now.
@@ -56,6 +70,8 @@ nnoremap <F3> 0y^/^<C-R>0\s\@!<CR>
     "       the beginning of the line and the first text on the line.
     "   It will also stop working when you get to a line with only indent, although it can reach those lines.
 
+
+
 set backspace=indent,eol,start
     " ^ Sensible backspace behavior
     "   See here: https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
@@ -65,27 +81,35 @@ set backspace=indent,eol,start
 
 set visualbell
     " ^ Use visualbell (screen flash) instead of beep
+
 set t_vb=
     " ^ Disable the screen flash completely.
     "       Note - both the settings above are required if you want to disable
     "       both beeping and flashing.
 
 
+
 " The following changes come from making everything tabs->spaces, not only python.
 " This effectively replaces the commented python code later on:
+
 set tabstop=4       " ts  in short
     " ^ Tab key is now 4 chars rather than the traditional 8 chars which wastes
     "       too much space when indenting.
+
 set expandtab       " et  in short
     " ^ Inserts spaces whenever TAB key is pressed
     "       If you want to insert a real tab char - use:  ctrl-v <TAB_KEY>
+
 set shiftwidth=4        " sw  in short
     " ^ Sets the number of space characters inserted for indentation
+
 set softtabstop=4       " sts  in short
     " ^ Makes the spaces feel like real tabs
 
+
 set list
     " ^ list & listchars mostly useful to find leading tabs at the beginning of python code
+
 set listchars=extends:>,precedes:<,nbsp:☠,tab:▸␣
     " ^ The chars are:
     "   extends -   Show the '>' char in long nonwrapped lines at the right
@@ -116,27 +140,37 @@ set nowrap
     "       that are longer than the screen fits.
 
 
+
 " The following section defines the line numbering colors and cursor line highlighting.
 " Note - the colors defined here work well when viewed inside a 256+ color terminal.
 "   If you edit a file directly on the device console you will most likely see degraded colors
 "   or even missing/wrong colors. Don't be surprised by this and try to fix vimrc, it's probably
 "   the console that can't handle the colors defined herein.
+
 set cursorline
     " ^ Enables cursor line position tracking
+
 highlight clear CursorLine
     " ^ Removes the underline caused by enabling cursorline
+
 highlight CursorLine guibg=#00005f ctermbg=17
+
 "highlight CursorLine guibg=#00005f ctermbg=darkblue
     " ^ Dark blue background on the current cursor line
     " ^ Can be specified as number or color name
+
 "highlight CursorLine guibg=#262626 ctermbg=235
     " ^ Dark gray background on the current cursor line
+
 highlight clear CursorLineNr
     " ^ In new vim versions the cursor line number is separated from CursorLine
     "       and without this the cursor line number will still be underlined.
+
 highlight LineNr ctermfg=blue
+
 highlight CursorLineNR ctermbg=red ctermfg=white
     " ^ Sets the line numbering to a clear background
+
 
 
 " Support for yaml format:
@@ -153,19 +187,28 @@ autocmd Filetype yaml setlocal
     "       color of the vertical bar.
 
 
+
 " Extra white space tips from here:
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces :
+
 highlight ExtraWhitespace ctermbg=red guibg=red
+
 match ExtraWhitespace /\s\+$/
     " ^ Any whitespace - even on empty lines
+
 " match ExtraWhitespace /\S\zs\s\+$/
     " ^ Whitespace only after some text
+
 " autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     " ^ Any whitespace
+
 " autocmd InsertLeave * match ExtraWhitespace /\S\zs\s\+$/
     " ^ Only after some text
+
 " autocmd BufWinLeave * call clearmatches()
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -174,12 +217,15 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     "     Similar situation to disabling mouse in vim.
 
 
+
 " These settings highlight a vertical cursor column:
+
 " set cursorcolumn
     " ^ This turns on a vertical bar at the cursor position. By default if you
     "       don't use:  highlight CursorColumn  to set the color - it uses the
     "       default colorscheme color for that.
     "   This can be very annoying so I only use it for yaml files (see yaml section above).
+
 highlight CursorColumn ctermbg=235
     " ^ Only if:  set cursorcolumn  has been enabled, this command sets the
     "       color of the vertical bar to the color you define here.
@@ -189,18 +235,24 @@ highlight CursorColumn ctermbg=235
     "       and is darker than visual select background color (ctrl or shift v).
     "   The color codes for greyscale are 232 (very dark, almost black) to 255 (white)
     "       documented here:  https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+
 " highlight CursorColumn ctermbg=Red
     " ^ Same as above but an example how to use color names instead of color codes.
+
 " highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
     " ^ In terminal this results in a vertical bar which is all white text on a yellow background.
     "       The current char under the cursor maintains its own colorscheme color.
+
 " highlight CursorColumn ctermfg=Black ctermbg=Yellow cterm=bold guifg=Black guibg=yellow gui=NONE
     " ^ In terminal this results in a vertical bar which is all black text on a yellow background.
     "       The current char under the cursor maintains its own colorscheme color.
 
 
+
 " The following additions can been made to support python editing in vim:
+
 " autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
 " Or as individual lines:
 " autocmd Filetype python setlocal
 "   \ expandtab
@@ -210,7 +262,8 @@ highlight CursorColumn ctermbg=235
 "   \ list
 "   \ listchars=nbsp:☠,tab:▸␣
 "   "\ listchars=nbsp:.,tab:>-  " Option using non-unicode chars
-" However I've modified the default behavior for this so it is enforced everywhere
+    " ^ However I've modified the default behavior for this so it is enforced everywhere
+
 
 
 "   Troubleshooting tips:
