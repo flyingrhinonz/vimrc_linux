@@ -1,13 +1,25 @@
 " Name:         vimrc.local
 " Description:  vim productivity improvements
-" Version:      1.0.26
-" Date:         2024-05-19
-" Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
+" Version:      1.0.27
+" Date:         2024-11-19
+" Copyright:    2021+ Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
 " License:      GPLv3
 " Github:       https://github.com/flyingrhinonz/vimrc_linux
 
 " Usage tips can be found at the end of this file.
 
+
+set encoding=utf-8
+scriptencoding utf-8
+    " ^ These two lines above solve the problem of vim not reading the unicode chars
+    "       in the :  `set listchars`  directive below.
+    "   These should be the first lines in the script.
+    "   However, as per the help for:  `:scriptencoding`  if you set the:  `encoding`  option
+    "       in your vimrc,  `:scriptencoding`  must be placed after that.
+    "   Explained below:
+    "       `encoding` is for the editor itself
+    "       `fileencoding` is for the buffer
+    "       `scriptencoding` is for vim scripts
 
 
 syntax on
@@ -107,6 +119,7 @@ set softtabstop=4       " sts  in short
     " ^ Makes the spaces feel like real tabs
 
 
+
 set list
     " ^ list & listchars mostly useful to find leading tabs at the beginning of python code
 
@@ -116,11 +129,15 @@ set listchars=extends:>,precedes:<,nbsp:☠,tab:▸␣
     "   precedes -  Show the '<' char in long nonwrappled lines at the left
     "   nbsp -      Show the special char instead of a non-breakable space
     "   tab -       Shows the special char instead of the tab char
+    "   trail -     Sets the trailing spaces char. I don't use this because
+    "               I'm using the:  ExtraWhitespace config later on
     "   Note - The above directive doesn't work on old vim versions and gives an error
     "       similar to:  `E474: Invalid argument: listchars=extends:>,precedes: ...`
     "       If you comment it out on its own - you'll end up with vim adding formatting
     "       signs (such as:  `$`  at the end of lines). To disable this behavior - also
     "       comment out the earlier:  `set list`  directive.
+    "       In new vim versions if you get a similar looking error - look at the:  `encoding`
+    "       directives at the top of this file.
 
 highlight NonText ctermfg=yellow ctermbg=blue
     " ^ Change the colors for the nontext listchars I configured above (extends & precedes)
@@ -281,8 +298,11 @@ highlight CursorColumn ctermbg=235
 "       Disabling mouse in vim.
 "       Works with FileType to disable some unwanted behaviors.
 "       Disabling auto comment on new line.
+"       Disabling auto wrap at 80 char line length.
 "       Plugin-defined indentation - especially unexpected yaml editing behavior.
 "
+"   Another solution to seeing wierd chars in your terminal is missing utf-8 support. Fix it with:
+"       Add this to your:  `~/.bashrc`  file:  `export LANG=en_US.UTF-8`  (or a language of your choice).
 "
 "   Indentation problems:
 "       If you're encountering all sorts of issues with indentation (I've seen this on
